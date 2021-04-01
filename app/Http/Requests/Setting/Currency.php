@@ -27,11 +27,14 @@ class Currency extends FormRequest
         if ($this->getMethod() == 'PATCH') {
             $id = is_numeric($this->currency) ? $this->currency : $this->currency->getAttribute('id');
         } else {
-            $id = null;
+            $id = -1;
         }
-
         // Get company id
         $company_id = $this->request->get('company_id');
+
+        if(empty($company_id)){
+            $company_id = session('company_id');
+        }
 
         return [
             'name' => 'required|string',

@@ -27,7 +27,7 @@ class Role extends FormRequest
         if ($this->getMethod() == 'PATCH') {
             $id = is_numeric($this->role) ? $this->role : $this->role->getAttribute('id');
         } else {
-            $id = null;
+            $id = 0;
         }
 
         return [

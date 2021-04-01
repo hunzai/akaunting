@@ -129,6 +129,9 @@ class Dashboard
 
             switch ($invoice->status) {
                 case 'paid':
+                    if(!property_exists('amounts', 'paid.' . $date)){
+                        $amounts['paid'][$date] = 0;
+                    }
                     $amounts['paid'][$date] += $amount;
                     break;
                 case 'partial':
